@@ -1,3 +1,4 @@
+
 [
   {
     "name": "Premium Ultrabook",
@@ -8,5 +9,92 @@
     ],
     "then": "recommend:premium_ultrabook",
     "priority": 5
+  },
+  {
+    "name": "Budget Laptop",
+    "if": [
+      "budget_low",
+      "everyday_use"
+    ],
+    "then": "recommend:budget_laptop",
+    "priority": 3
+  },
+  {
+    "name": "Gaming Laptop",
+    "if": [
+      "gaming",
+      "performance_priority",
+      "budget_high"
+    ],
+    "then": "recommend:gaming_laptop",
+    "priority": 5
+  },
+  {
+    "name": "Professional Workstation",
+    "if": [
+      "professional_work",
+      "performance_priority",
+      "budget_high"
+    ],
+    "then": "recommend:professional_workstation",
+    "priority": 5
+  },
+  {
+    "name": "Student Laptop",
+    "if": [
+      "student",
+      "portable",
+      "budget_medium"
+    ],
+    "then": "recommend:student_laptop",
+    "priority": 3
+  },
+  {
+    "name": "Business Ultrabook",
+    "if": [
+      "professional_work",
+      "portable",
+      "long_battery"
+    ],
+    "then": "recommend:business_ultrabook",
+    "priority": 4
+  },
+  {
+    "name": "Travel Laptop",
+    "if": [
+      "portable",
+      "long_battery",
+      "budget_medium"
+    ],
+    "then": "recommend:travel_laptop",
+    "priority": 4
+  },
+  {
+    "name": "Everyday Laptop",
+    "if": [
+      "everyday_use",
+      "budget_medium"
+    ],
+    "then": "recommend:everyday_laptop",
+    "priority": 2
+  },
+  {
+    "name": "Performance Laptop",
+    "if": [
+      "performance_priority",
+      "budget_medium"
+    ],
+    "then": "recommend:performance_laptop",
+    "priority": 4
+  },
+  {
+    "name": "Affordable Ultrabook",
+    "if": [
+      "portable",
+      "long_battery",
+      "budget_low"
+    ],
+    "then": "recommend:affordable_ultrabook",
+    "priority": 3
   }
 ]
