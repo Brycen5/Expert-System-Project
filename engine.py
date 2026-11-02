@@ -19,16 +19,41 @@ class ForwardChainingEngine:
         self.facts.update(initial)
 
     def can_fire(self, rule: Rule) -> bool:
-        """TODO: Return True if all antecedents are true and consequent not yet known."""
-        pass
+        """Return True if all antecedents are true and consequent not yet known."""
+
+        return (
+        all(fact in self.facts for fact in rule.antecedents)
+        and rule.consequent not in self.facts
+    )
 
     def run(self) -> None:
-        """TODO: Implement the forward chaining loop."""
-        # while there are rules that can fire:
-        #     select one rule (students decide tie-breaking)
-        #     add its consequent to facts
-        #     record in trace
-        pass
+        """Implement the forward chaining loop."""
+
+    while True:
+
+        # Find all rules that can currently fire
+        applicable_rules = [
+            rule for rule in self.rules
+            if self.can_fire(rule)
+        ]
+
+        # Stop if no more rules can fire
+        if not applicable_rules:
+            break
+
+        # Select the rule with the highest priority
+        rule = max(applicable_rules, key=lambda r: r.priority)
+
+        # Add the conclusion to working memory
+        self.facts.add(rule.consequent)
+
+        # Record the rule execution
+        self.trace.append({
+            "rule": rule.name,
+            "antecedents": rule.antecedents,
+            "consequent": rule.consequent,
+            "priority": rule.priority
+        })
 
     def conclusions(self) -> Dict[str, List[str]]:
         """TODO: Return separated results (recommendations, specs, other facts)."""
