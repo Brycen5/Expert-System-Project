@@ -56,5 +56,25 @@ class ForwardChainingEngine:
         })
 
     def conclusions(self) -> Dict[str, List[str]]:
-        """TODO: Return separated results (recommendations, specs, other facts)."""
-        pass
+        """Return separated results (recommendations, specs, other facts)."""
+
+        recommendations = []
+        specs = []
+        other_facts = []
+
+        for fact in self.facts:
+
+            if fact.startswith("recommend:"):
+                recommendations.append(fact)
+
+            elif fact.startswith("spec:"):
+                specs.append(fact)
+
+            else:
+                other_facts.append(fact)
+
+        return {
+        "recommendations": sorted(recommendations),
+        "specs": sorted(specs),
+        "other_facts": sorted(other_facts)
+    }
