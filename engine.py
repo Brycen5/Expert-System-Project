@@ -45,10 +45,10 @@ class ForwardChainingEngine:
         rule = max(applicable_rules, key=lambda r: r.priority)
 
         # Add the conclusion to working memory
-        self.facts.add(rule.consequent)
+    self.facts.add(rule.consequent)
 
         # Record the rule execution
-        self.trace.append({
+    self.trace.append({
             "rule": rule.name,
             "antecedents": rule.antecedents,
             "consequent": rule.consequent,
